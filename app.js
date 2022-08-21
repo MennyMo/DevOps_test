@@ -2,6 +2,9 @@ import express from 'express';
 import mongodb from './app/db/mongodb';
 import appInit from './app/config/app';
 
-mongodb();
+async function init() {
+   mongodb();
+   appInit(express());
+}
 
-appInit(express());
+init();

@@ -24,7 +24,7 @@ class UserController {
                 message: 'User id is required.'
             });
         }
-        const user = await UserModel.findOne({ _id: userId });
+        const user = await UserModel.findOne({ id: userId }); // 
         if (!user) {
             return res.status(404).json({
                 message: 'That user does not exist.'

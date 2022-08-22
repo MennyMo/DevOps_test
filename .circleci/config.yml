@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   deploy:
     docker:
-      - image: node:14.18.0-alpine
+      - image: node-alpine
         auth:
           username: $USERNAME
           password: $TOKEN
@@ -64,4 +64,3 @@ workflows:
   default:
     jobs:
       - deploy
-

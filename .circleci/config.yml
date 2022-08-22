@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            # apk add --update docker openrc
+            apk add --update docker openrc
             pip install awscli
 
       - run:

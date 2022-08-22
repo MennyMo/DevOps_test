@@ -15,7 +15,7 @@ To start this app,
 npm run dev
 ```
 
-# Live Server URL
+# Production URL
 ```
 http://ec2co-ecsel-1obve9xr9ds3m-1992558124.us-east-1.elb.amazonaws.com/
 ```

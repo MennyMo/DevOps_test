@@ -43,7 +43,8 @@ jobs:
       - run:
           name: Add Connection To AWS
           command: |
-            aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/l3u0n7j8
+            # aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/l3u0n7j8
+            docker login -u AWS -p $(aws ecr get-login-password --region the-region-you-are-in) 8559-9533-5520.dkr.ecr.us-east-1.amazonaws.com
 
       - run:
           name: Build image
@@ -53,12 +54,12 @@ jobs:
       - run:
           name: Tag image
           command: |
-            docker tag devops:latest public.ecr.aws/l3u0n7j8/devops:latest
+            docker tag devops:latest 8559-9533-5520.dkr.ecr.us-east-1.amazonaws.com/public.ecr.aws/l3u0n7j8/devops:latest
 
       - run:
           name: Push image
           command: |
-            docker push public.ecr.aws/l3u0n7j8/devops:latest
+            docker push 8559-9533-5520.dkr.ecr.us-east-1.amazonaws.com/public.ecr.aws/l3u0n7j8/devops:latest
 
 workflows:
   default:

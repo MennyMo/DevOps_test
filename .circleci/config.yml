@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   deploy:
     docker:
-      - image: node:18.7.0-alphine:3.15
+      - image: node:18.7.0-alphine3.15
         auth:
           username: $USERNAME
           password: $TOKEN

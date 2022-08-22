@@ -20,6 +20,4 @@ export default () => {
         console.log('Mongodb connected successfully.');
         loadData();
     });
-
-    return mongoose
 };

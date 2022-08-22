@@ -32,7 +32,6 @@ export default async function loadData() {
 
         // we want to make sure we are not storing "id" and "name" (that is, the headers) as values in the DB
         if (id !== 'id' && name !== 'name') {
-            data.push({id, name});
             // now we can create the user
             await UserModel.create(
                 { 
@@ -41,11 +40,6 @@ export default async function loadData() {
                 }
             );
         }
-    });
-
-    // just a nice way to view our data once we are done reading the file
-    rl.on('close', () => {
-        console.log('data' ,data);
     });
 }
 

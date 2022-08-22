@@ -43,8 +43,8 @@ jobs:
       - run:
           name: Add Connection To AWS
           command: |
-            # aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/l3u0n7j8
-            docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 8559-9533-5520.dkr.ecr.us-east-1.amazonaws.com
+            aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/l3u0n7j8
+            # docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 8559-9533-5520.dkr.ecr.us-east-1.amazonaws.com
 
       - run:
           name: Build image

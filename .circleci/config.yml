@@ -17,7 +17,7 @@ jobs:
           name: Install dependencies
           command: |
             # apk add --update docker openrc
-            npm i aws-cli
+            npm install -g aws-cli
 
       - run:
           name: Configure AWS Access Key ID

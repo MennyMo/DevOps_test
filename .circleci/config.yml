@@ -40,10 +40,10 @@ jobs:
             aws configure set region $AWS_DEFAULT_REGION \
             --profile $PROFILE_NAME
 
-      # - run:
-      #     name: Add Connection To AWS
-      #     command: |
-      #       aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/l3u0n7j8
+      - run:
+          name: Add Connection To AWS
+          command: |
+            aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/l3u0n7j8
 
       - run:
           name: Build image

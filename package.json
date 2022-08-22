@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon -r esm ./app.js"
+    "start": "node -r esm ./app.js",
+    "dev": "nodemon -r esm ./app.js"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,8 @@
     "express": "^4.18.1",
     "helmet": "^5.1.1",
     "mongoose": "^6.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }

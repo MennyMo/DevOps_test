@@ -24,7 +24,7 @@ jobs:
           command: |
             aws configure set aws_access_key_id \
             $AWS_ACCESS_KEY \
-            --profile $PROFILE_NAME
+            # --profile $PROFILE_NAME
             echo "Print the value for $AWS_ACCESS_KEY $AWS_SECRET_KEY"
 
       - run:
@@ -32,13 +32,13 @@ jobs:
           command: |
             aws configure set aws_secret_access_key \
             $AWS_SECRET_KEY \
-            --profile $PROFILE_NAME
+            # --profile $PROFILE_NAME
 
       - run:
           name: Configure AWS default region
           command: |
             aws configure set region $AWS_DEFAULT_REGION \
-            --profile $PROFILE_NAME
+            # --profile $PROFILE_NAME
 
       - run:
           name: Add Connection To AWS

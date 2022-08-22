@@ -1,0 +1,67 @@
+version: 2.1
+
+jobs:
+  deploy:
+    docker:
+      - image: node:14.18.0-alpine
+        auth:
+          username: $USERNAME
+          password: $TOKEN
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: false
+      - run:
+          name: Install dependencies
+          command: |
+            # apk add --update docker openrc
+            npm i aws-cli
+
+      - run:
+          name: Configure AWS Access Key ID
+          command: |
+            aws configure set aws_access_key_id \
+            $AWS_ACCESS_KEY \
+            --profile $PROFILE_NAME
+            echo "Print the value for $AWS_ACCESS_KEY $AWS_SECRET_KEY"
+
+      - run:
+          name: Configure AWS Secret Access Key
+          command: |
+            aws configure set aws_secret_access_key \
+            $AWS_SECRET_KEY \
+            --profile $PROFILE_NAME
+
+      - run:
+          name: Configure AWS default region
+          command: |
+            aws configure set region $AWS_DEFAULT_REGION \
+            --profile $PROFILE_NAME
+
+      - run:
+          name: Add Connection To AWS
+          command: |
+            aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/l3u0n7j8
+
+      - run:
+          name: Build image
+          command: |
+            docker build -t devops .
+
+      - run:
+          name: Tag image
+          command: |
+            docker tag devops:latest public.ecr.aws/l3u0n7j8/devops:latest
+
+      - run:
+          name: Push image
+          command: |
+            docker push public.ecr.aws/l3u0n7j8/devops:latest
+
+workflows:
+  default:
+    jobs:
+      - deploy
+

@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Configure AWS default region
           command: |
-            aws configure set region $AWS_DEFAULT_REGION \
+            aws configure set region $REGION \
             --profile $PROFILE_NAME
 
       - run:

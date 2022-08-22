@@ -6,7 +6,7 @@ jobs:
       - image: python:3.7-alpine3.11
         auth:
           username: $USERNAME
-          password: $TOKEN
+          password: $PASSWORD
     working_directory: ~/repo
 
     steps:

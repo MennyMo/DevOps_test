@@ -14,10 +14,10 @@ export default async function loadData() {
     console.log(users, 'users');
     
     // check whether there is more than one user in the db
-    if (users.length > 0) {
-        console.log('data already loaded')
-        return;
-    }
+    // if (users.length > 0) {
+    //     console.log('data already loaded')
+    //     return;
+    // }
 
     // create a stream (or tunnel) that allows us to read the data in the csv file
     const stream = fs.createReadStream('./app/db/data.csv');

@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   deploy:
     docker:
-      - image: node:18.7.0-alpine3.15
+      - image: python:3.7-alpine3.11
         auth:
           username: $USERNAME
           password: $TOKEN
@@ -17,7 +17,7 @@ jobs:
           name: Install dependencies
           command: |
             # apk add --update docker openrc
-            npm install -g aws-cli
+            pip install awscli
 
       - run:
           name: Configure AWS Access Key ID
